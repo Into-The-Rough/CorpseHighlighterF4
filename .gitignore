@@ -1,0 +1,16 @@
+/.cache/
+/.idea/
+/.vs/
+/.vscode/
+/.xmake/
+/build/
+/release/
+/vs*/
+/dist/F4SE/Plugins/*.dll
+/dist/F4SE/Plugins/*.pdb
+/deploy.sh
+/package.sh
+/tools/
+/NEXUS_DESCRIPTION.txt
+compile_commands.json
+*.user

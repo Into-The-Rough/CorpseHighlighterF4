@@ -1,0 +1,26 @@
+#pragma once
+
+#include <REX/CAST.h>
+#include <REX/CONVERT.h>
+#include <REX/FIniSettingStore.h>
+#include <REX/FJsonSettingStore.h>
+#include <REX/FMemoryMap.h>
+#include <REX/FModule.h>
+#include <REX/FModuleSection.h>
+#include <REX/FSettingStore.h>
+#include <REX/FTomlSettingStore.h>
+#include <REX/FUUID.h>
+#include <REX/HASH.h>
+#include <REX/ISetting.h>
+#include <REX/ISettingStore.h>
+#include <REX/LOG.h>
+#include <REX/TAtomicRef.h>
+#include <REX/TEnum.h>
+#include <REX/TEnumSet.h>
+#include <REX/TIniSetting.h>
+#include <REX/TJsonSetting.h>
+#include <REX/TScopeExit.h>
+#include <REX/TSetting.h>
+#include <REX/TSingleton.h>
+#include <REX/TStaticString.h>
+#include <REX/TTomlSetting.h>

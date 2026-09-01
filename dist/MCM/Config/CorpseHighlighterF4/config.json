@@ -1,0 +1,34 @@
+{
+  "minMcmVersion": 2,
+  "modName": "CorpseHighlighterF4",
+  "displayName": "Corpse Highlighter",
+  "content": [
+    { "text": "<font size='30'><p align='center'>Corpse Highlighter</p></font>", "html": true, "type": "text" },
+    { "text": "Reset all settings to defaults", "type": "button",
+      "help": "Restore every Corpse Highlighter setting to its shipped default.",
+      "action": { "type": "CallExternalFunction", "plugin": "CorpseHighlighterF4", "function": "ResetDefaults", "params": [] } },
+    { "text": "Options", "type": "section" },
+    { "id": "bEnabled:Main", "text": "Enabled", "type": "switcher",
+      "help": "Highlight actors with an effect shader when they die. Applies from the next death.",
+      "valueOptions": { "sourceType": "ModSettingBool", "defaultValue": true } },
+    { "id": "iShader:Main", "text": "Highlight shader", "type": "dropdown",
+      "help": "The look applied to fresh corpses. Applies from the next death, so you can compare in-game. Custom reads sCustomShaderPlugin/sCustomShaderFormID from MCM\\Settings\\CorpseHighlighterF4.ini.",
+      "valueOptions": {
+        "sourceType": "ModSettingInt",
+        "defaultValue": 2,
+        "options": [
+          "Targeting HUD (blue)",
+          "Detect Life (green mist)",
+          "Detect Life Hostile (red mist)",
+          "Legendary Flare (orange)",
+          "Plasma Goo (green)",
+          "Cryo Frost (white)",
+          "Hologram (blue)",
+          "Institute Teleport (blue)",
+          "Custom (edit settings INI)"
+        ] } },
+    { "id": "fMaxDistance:Main", "text": "Max distance", "type": "slider",
+      "help": "Only highlight deaths within this range of you. 0 = unlimited. Roughly 70 units per metre (7000 = about 100 m).",
+      "valueOptions": { "sourceType": "ModSettingFloat", "min": 0, "max": 10000, "step": 100, "defaultValue": 0 } }
+  ]
+}
