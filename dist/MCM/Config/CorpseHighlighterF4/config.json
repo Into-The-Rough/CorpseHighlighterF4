@@ -27,6 +27,9 @@
           "Institute Teleport (blue)",
           "Custom (edit settings INI)"
         ] } },
+    { "id": "bStopWhenLooted:Main", "text": "Stop once looted", "type": "switcher",
+      "help": "Turn the glow off as soon as you open the body or take anything from it.",
+      "valueOptions": { "sourceType": "ModSettingBool", "defaultValue": true } },
     { "id": "fMaxDistance:Main", "text": "Max distance", "type": "slider",
       "help": "Only highlight deaths within this range of you. 0 = unlimited. Roughly 70 units per metre (7000 = about 100 m).",
       "valueOptions": { "sourceType": "ModSettingFloat", "min": 0, "max": 10000, "step": 100, "defaultValue": 0 } }

@@ -26,6 +26,7 @@ namespace corpse_highlighter
 		bool          enabled = true;
 		int           shader = 2;
 		float         maxDistance = 0.0f;
+		bool          stopWhenLooted = true;
 		std::string   customPlugin = "Fallout4.esm";
 		std::uint32_t customFormID = 0x0022517E;
 

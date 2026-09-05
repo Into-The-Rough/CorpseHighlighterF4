@@ -24,14 +24,14 @@ int main()
 
 	//defaults when file missing: detect life hostile (red mist)
 	auto s = LoadSettings(".\\does_not_exist.ini");
-	assert(s.enabled && s.shader == 2 && s.maxDistance == 0.0f);
+	assert(s.enabled && s.shader == 2 && s.maxDistance == 0.0f && s.stopWhenLooted);
 	auto r = ResolveShader(s);
 	assert(r.plugin == "Fallout4.esm" && r.formID == 0x0022517E);
 
-	//full parse: disable, pick a dropdown entry, range
-	write("t_settings.ini", "[Main]\nbEnabled=0\niShader=0\nfMaxDistance=3500.5\n; comment\n");
+	//full parse: disable, pick a dropdown entry, range, keep the glow after looting
+	write("t_settings.ini", "[Main]\nbEnabled=0\niShader=0\nfMaxDistance=3500.5\nbStopWhenLooted=0\n; comment\n");
 	s = LoadSettings(".\\t_settings.ini");
-	assert(!s.enabled && s.shader == 0 && s.maxDistance == 3500.5f);
+	assert(!s.enabled && s.shader == 0 && s.maxDistance == 3500.5f && !s.stopWhenLooted);
 	r = ResolveShader(s);
 	assert(r.plugin == "Fallout4.esm" && r.formID == 0x001E077C);  //PowerArmorTargetingHUDFXS
 

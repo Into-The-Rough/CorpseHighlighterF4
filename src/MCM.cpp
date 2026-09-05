@@ -41,6 +41,7 @@ namespace corpse_highlighter::mcm
 				bool success = SetValue(a_params.movie, kSetBool, "bEnabled:Main", Scaleform::GFx::Value(true));
 				success = SetValue(a_params.movie, kSetInt, "iShader:Main", Scaleform::GFx::Value(2)) && success;
 				success = SetValue(a_params.movie, kSetFloat, "fMaxDistance:Main", Scaleform::GFx::Value(0.0)) && success;
+				success = SetValue(a_params.movie, kSetBool, "bStopWhenLooted:Main", Scaleform::GFx::Value(true)) && success;
 				success = SetValue(
 							  a_params.movie,
 							  kSetString,

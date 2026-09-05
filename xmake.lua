@@ -1,3 +1,9 @@
+option("logging")
+    set_default(false)
+    set_showmenu(true)
+    set_description("keep the CommonLib logging stack for a dev cycle, never for release")
+option_end()
+
 set_optimize("smallest")
 add_cxflags("/Gw", "/Gy")
 
@@ -15,6 +21,7 @@ end
 
 includes("lib/commonlibf4")
 
+if not has_config("logging") then
 target("commonlib-shared")
     remove_files("lib/commonlibf4/lib/commonlib-shared/src/REL/IDDB.cpp")
     remove_files("lib/commonlibf4/lib/commonlib-shared/src/REX/LOG.cpp")
@@ -41,9 +48,10 @@ target("commonlibf4")
     })
     on_load(prepend_no_log_include)
 target_end()
+end
 
 set_project("CorpseHighlighterF4")
-set_version("1.0.0")
+set_version("1.1.0")
 set_license("GPL-3.0")
 set_languages("c++23")
 set_warnings("allextra")
@@ -62,8 +70,12 @@ target("CorpseHighlighterF4")
     add_files("src/**.cpp")
     add_headerfiles("src/**.h")
     add_includedirs("src")
-    add_includedirs("compat/commonlibf4/lib/commonlib-shared/include", { before = true })
-    on_load(prepend_no_log_include)
+    if has_config("logging") then
+        add_defines("CORPSEHIGHLIGHTER_LOGGING")
+    else
+        add_includedirs("compat/commonlibf4/lib/commonlib-shared/include", { before = true })
+        on_load(prepend_no_log_include)
+    end
     set_pcxxheader("src/pch.h")
 
 	add_installfiles("dist/MCM/Config/CorpseHighlighterF4/config.json", {
@@ -80,10 +92,21 @@ target("test_config")
     add_files("src/PureConfig.cpp", "tests/test_config.cpp")
     add_includedirs("src")
 
+target("test_loot")
+    set_kind("binary")
+    set_default(false)
+    add_deps("commonlib-shared")
+    add_files("src/Looting.cpp", "tests/test_loot.cpp")
+    add_includedirs("src")
+
 target("tests")
     set_kind("phony")
     set_default(false)
-    add_deps("test_config")
+    add_deps("test_config", "test_loot")
     on_run(function (target)
-        os.execv(target:dep("test_config"):targetfile())
+        for _, dep in ipairs(target:orderdeps()) do
+            if dep:kind() == "binary" then
+                os.execv(dep:targetfile())
+            end
+        end
     end)

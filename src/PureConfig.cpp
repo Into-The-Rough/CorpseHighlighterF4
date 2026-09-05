@@ -146,6 +146,7 @@ namespace corpse_highlighter
 		settings.enabled = ParseBool(ReadValue(a_iniPath, "bEnabled"), settings.enabled);
 		settings.shader = ParseInt(ReadValue(a_iniPath, "iShader"), settings.shader);
 		settings.maxDistance = std::max(0.0f, ParseFloat(ReadValue(a_iniPath, "fMaxDistance"), settings.maxDistance));
+		settings.stopWhenLooted = ParseBool(ReadValue(a_iniPath, "bStopWhenLooted"), settings.stopWhenLooted);
 		const auto pluginValue = ReadValue(a_iniPath, "sCustomShaderPlugin");
 		const auto plugin = Trim(pluginValue);
 		if (!plugin.empty()) {

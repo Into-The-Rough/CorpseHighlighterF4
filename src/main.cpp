@@ -6,6 +6,11 @@
 
 namespace
 {
+#ifdef CORPSEHIGHLIGHTER_LOGGING
+	constexpr bool kLogging = true;  //dev cycles only, the release build strips the whole log stack
+#else
+	constexpr bool kLogging = false;
+#endif
 	constexpr REL::Version kMinimumF4SE{ 0, 6, 23, 0 };
 	constexpr REL::Version kSaveFolderInterfaceF4SE{ 0, 7, 1, 0 };
 	constexpr std::array   kSupportedRuntimes{
@@ -50,7 +55,7 @@ namespace
 
 F4SE_PLUGIN_VERSION = []() noexcept {
 	F4SE::PluginVersionData version{};
-	version.PluginVersion({ 1, 0, 0, 0 });
+	version.PluginVersion({ 1, 1, 0, 0 });
 	version.PluginName("CorpseHighlighterF4");
 	version.AuthorName("lNexAl");
 	version.UsesAddressLibrary(true);
@@ -86,7 +91,7 @@ F4SE_PLUGIN_LOAD(const F4SE::LoadInterface* a_f4se)
 	}
 
 	F4SE::Impl::F4SEInterface legacyInterface{};
-	F4SE::Init(LoadInterfaceFor(a_f4se, legacyInterface), { .log = false });
+	F4SE::Init(LoadInterfaceFor(a_f4se, legacyInterface), { .log = kLogging });
 	REX::INFO("Fallout 4 runtime {}", a_f4se->RuntimeVersion());
 
 	const auto* messaging = F4SE::GetMessagingInterface();

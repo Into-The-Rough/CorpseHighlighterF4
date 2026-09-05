@@ -11,7 +11,11 @@ namespace corpse_highlighter::runtime
 	};
 
 	inline constexpr AddressPair deathEventSource{ 1465690, 2201833 };
+	inline constexpr AddressPair activateEventSource{ 166230, 2201819 };
+	inline constexpr AddressPair containerChangedEventSource{ 242538, 2201832 };
 	inline constexpr AddressPair applyEffectShader{ 652173, 2205201 };
+	inline constexpr AddressPair finishShaderEffect{ 631860, 2234097 };
+	inline constexpr AddressPair processListsSingleton{ 1569706, 4796160 };
 	inline constexpr AddressPair scaleformGlobalHeap{ 939898, 2707353 };
 	inline constexpr AddressPair gfxObjectAddRef{ 244786, 2286228 };
 	inline constexpr AddressPair gfxObjectRelease{ 856221, 2286229 };
