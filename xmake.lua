@@ -51,7 +51,7 @@ target_end()
 end
 
 set_project("CorpseHighlighterF4")
-set_version("1.1.0")
+set_version("1.1.1")
 set_license("GPL-3.0")
 set_languages("c++23")
 set_warnings("allextra")

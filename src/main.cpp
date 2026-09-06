@@ -11,7 +11,8 @@ namespace
 #else
 	constexpr bool kLogging = false;
 #endif
-	constexpr REL::Version kMinimumF4SE{ 0, 6, 23, 0 };
+	//0.6.21 to 0.6.23 share one plugin api, GetPluginInfo arrived in 0.6.21
+	constexpr REL::Version kMinimumF4SE{ 0, 6, 21, 0 };
 	constexpr REL::Version kSaveFolderInterfaceF4SE{ 0, 7, 1, 0 };
 	constexpr std::array   kSupportedRuntimes{
         F4SE::RUNTIME_1_10_163,
@@ -55,7 +56,7 @@ namespace
 
 F4SE_PLUGIN_VERSION = []() noexcept {
 	F4SE::PluginVersionData version{};
-	version.PluginVersion({ 1, 1, 0, 0 });
+	version.PluginVersion({ 1, 1, 1, 0 });
 	version.PluginName("CorpseHighlighterF4");
 	version.AuthorName("lNexAl");
 	version.UsesAddressLibrary(true);
